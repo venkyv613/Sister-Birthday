@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Sister ❤️</title>
+
+<style>
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    text-align:center;
+    overflow-x:hidden;
+}
+
+h1{
+    margin-top:30px;
+    font-size:40px;
+    color:#b30059;
+}
+
+#countdown{
+    font-size:22px;
+    color:#333;
+    margin:15px;
+}
+
+#slideshow{
+    width:260px;
+    height:260px;
+    margin:20px auto;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+#slideshow img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.message{
+    font-size:18px;
+    width:80%;
+    margin:auto;
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+footer{
+    margin:30px;
+    font-size:14px;
+    color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎂 Happy Birthday My Dear Sister ❤️</h1>
+
+<div id="countdown"></div>
+
+<div id="slideshow">
+    <img id="slide" src="img1.jpg">
+</div>
+
+<div class="message">
+💖 Dear Sister,<br><br>
+You are my biggest blessing in life.<br>
+May your smile always shine bright 😊<br>
+Stay happy forever 🎉🎂<br><br>
+Love You ❤️
+</div>
+
+<audio autoplay loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<footer>
+Made with ❤️ by Your Brother
+</footer>
+
+<script>
+// -------- Slideshow --------
+const images = ["img1.jpg","img2.jpg","img3.jpg","img4.jpg"];
+let i = 0;
+
+setInterval(()=>{
+    i = (i+1)%images.length;
+    document.getElementById("slide").src = images[i];
+},3000);
+
+// -------- Countdown --------
+const birthday = new Date("Feb 20, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+    const now = new Date().getTime();
+    const diff = birthday - now;
+
+    if(diff > 0){
+        const d = Math.floor(diff/(1000*60*60*24));
+        const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+        const m = Math.floor((diff%(1000*60*60))/(1000*60));
+        const s = Math.floor((diff%(1000*60))/1000);
+
+        document.getElementById("countdown").innerHTML =
+        `🎉 Birthday in: ${d}d ${h}h ${m}m ${s}s`;
+    }else{
+        document.getElementById("countdown").innerHTML =
+        "🎊 Happy Birthday Today! 🎂🎉";
+    }
+},1000);
+
+// -------- Confetti --------
+for(let j=0;j<80;j++){
+    const c = document.createElement("div");
+    c.style.position="fixed";
+    c.style.width="8px";
+    c.style.height="8px";
+    c.style.background=`hsl(${Math.random()*360},100%,70%)`;
+    c.style.left=Math.random()*100+"vw";
+    c.style.top="-10px";
+    c.style.opacity=Math.random();
+    c.style.borderRadius="50%";
+    document.body.appendChild(c);
+
+    let fall = Math.random()*5+2;
+
+    setInterval(()=>{
+        let t = parseFloat(c.style.top);
+        if(t>100) c.style.top="-10px";
+        else c.style.top=(t+fall)+"px";
+    },50);
+}
+</script>
+
+</body>
+</html>
