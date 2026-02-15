@@ -73,7 +73,7 @@ Dear Samantha,<br><br>
 Happy Birthday 🎂🎉<br>
 Wishing you good health and happiness 😊<br>
 May all your dreams come true ✨<br><br>
-From Your Brother 💙
+From Your Divya 💙
 </div>
 
 <audio autoplay loop>
@@ -98,27 +98,9 @@ setInterval(()=>{
     i = (i+1)%images.length;
     document.getElementById("slide").src = images[i];
 },3000);
-
-// -------- Countdown --------
-const birthday = new Date("Feb 20, 2026 00:00:00").getTime();
-
-setInterval(()=>{
-    const now = new Date().getTime();
-    const diff = birthday - now;
-
-    if(diff > 0){
-        const d = Math.floor(diff/(1000*60*60*24));
-        const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-        const m = Math.floor((diff%(1000*60*60))/(1000*60));
-        const s = Math.floor((diff%(1000*60))/1000);
-
-        document.getElementById("countdown").innerHTML =
-        `🎉 Birthday in: ${d}d ${h}h ${m}m ${s}s`;
-    }else{
-        document.getElementById("countdown").innerHTML =
-        "🎊 Happy Birthday Today! 🎂🎉";
-    }
-},1000);
+// -------- Birthday Message Only --------
+document.getElementById("countdown").innerHTML =
+"🎊 Happy Birthday Samantha 🎂🎉";
 
 // -------- Confetti --------
 for(let j=0;j<80;j++){
